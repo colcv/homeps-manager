@@ -41,7 +41,9 @@ const register = async (req, res) => {
   const payload = utils.createUserTokenPayload(admin);
   const token = utils.createToken(payload);
   utils.attachCookiesToResponse(res, token);
-  res.status(StatusCodes.CREATED).json({ user: payload });
+
+  admin.password = undefined;
+  res.status(StatusCodes.CREATED).json({ status: 'success', user: admin });
 };
 
 /**
@@ -67,7 +69,9 @@ const login = async (req, res) => {
   const payload = utils.createUserTokenPayload(user);
   const token = utils.createToken(payload);
   utils.attachCookiesToResponse(res, token);
-  res.status(StatusCodes.OK).json({ user: payload });
+
+  user.password = undefined;
+  res.status(StatusCodes.OK).json({ status: 'success', user });
 };
 
 /**
@@ -82,7 +86,9 @@ const logout = async (req, res) => {
     expires: new Date(Date.now()),
   });
 
-  res.status(StatusCodes.OK).json({ message: 'User logged out' });
+  res
+    .status(StatusCodes.OK)
+    .json({ status: 'success', message: 'User logged out' });
 };
 
 module.exports = { register, login, logout };

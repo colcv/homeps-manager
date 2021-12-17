@@ -27,7 +27,14 @@ const userSchema = new mongoose.Schema({
     enum: ['admin', 'user'],
     default: 'user',
   },
-  passwordChangedAt: Date,
+  avatar: {
+    type: String,
+    default: '/uploads/example.jpeg',
+  },
+  passwordChangedAt: {
+    type: Date,
+    select: false,
+  },
 });
 
 // MIDDLEWARES

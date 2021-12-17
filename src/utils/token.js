@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 
 /**
  * Create payload for (JWT) token based on logging in user
- * @param {object} user
- * @returns {object} Payload with user's name, ID and role
+ * @param {Object} user
+ * @returns {Object} Payload with user's name, ID and role
  */
 const createUserTokenPayload = (user) => {
   const payload = {
@@ -16,8 +16,8 @@ const createUserTokenPayload = (user) => {
 
 /**
  * Create (JWT) token with input payload
- * @param {object} payload
- * @returns {object} (JWT) Token
+ * @param {Object} payload
+ * @returns {Object} (JWT) Token
  */
 const createToken = (payload) => {
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -28,8 +28,8 @@ const createToken = (payload) => {
 
 /**
  * Attach cookies to response
- * @param {object} res - Response
- * @param {object} token - (JWT) Token
+ * @param {Object} res - Response
+ * @param {Object} token - (JWT) Token
  */
 const attachCookiesToResponse = (res, token) => {
   res.cookie('token', token, {

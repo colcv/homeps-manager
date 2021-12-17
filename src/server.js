@@ -2,7 +2,7 @@ require('dotenv').config();
 require('express-async-errors');
 
 const app = require('./app');
-const connectDb = require('./db/connect-mongodb');
+const connectDb = require('../db/connect-mongodb');
 
 const port = process.env.PORT || 3000;
 const db = process.env.MONGO_URL.replace(

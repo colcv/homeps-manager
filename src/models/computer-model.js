@@ -12,13 +12,21 @@ const computerSchema = new mongoose.Schema({
     enum: ['inactive', 'active', 'broken'],
     default: 'inactive',
   },
-  activeAt: Date,
+  activatedAt: Date,
   orderingFood: [
     {
       type: mongoose.Types.ObjectId,
       ref: 'Food',
     },
   ],
+});
+
+computerSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'orderingFood',
+    select: 'name price',
+  });
+  next();
 });
 
 module.exports = mongoose.model('Computer', computerSchema);

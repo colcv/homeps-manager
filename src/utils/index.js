@@ -14,6 +14,8 @@ const {
   createMongooseCastError,
 } = require('./error');
 
+const { filterObject } = require('./object');
+
 module.exports = {
   createToken,
   createUserTokenPayload,
@@ -24,4 +26,5 @@ module.exports = {
   createMongooseValidationError,
   createMongooseDuplicateKeyError,
   createMongooseCastError,
+  filterObject,
 };

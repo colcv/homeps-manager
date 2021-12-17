@@ -10,6 +10,8 @@ const notFoundHandler = require('./middlewares/not-found-handler');
 // ROUTERS
 const authRouter = require('./routes/auth-routes');
 const userRouter = require('./routes/user-routes');
+const computerRouter = require('./routes/computer-routes');
+const foodRouter = require('./routes/food-routes');
 
 // INITILIZE APP
 const app = express();
@@ -32,6 +34,8 @@ app.use(cookieParser(process.env.JWT_SECRET));
 // ROUTES
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/computers', computerRouter);
+app.use('/api/v1/foods', foodRouter);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
